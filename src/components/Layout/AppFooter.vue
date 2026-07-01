@@ -10,16 +10,10 @@
           <span class="footer-label">{{ $t('footer.copyright') }}：</span>
           <span class="footer-value">EpidGames&Bilibili</span>
         </p>
-        <router-link to="/changelog" class="changelog-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-          {{ $t('changelog.title') }}
-        </router-link>
+        <p class="footer-text">
+          <span class="footer-label">最後更新時間：</span>
+          <span class="footer-value">{{ formattedBuildTime }}</span>
+        </p>
       </div>
       <div class="footer-social">
         <a href="https://discord.com/users/noswork" target="_blank" rel="noopener noreferrer" class="social-link" title="Discord">
@@ -41,7 +35,21 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { getIconUrl } from '@/utils/assets'
+
+const buildTime = __BUILD_TIME__
+const formattedBuildTime = computed(() => {
+  const date = new Date(buildTime)
+  return date.toLocaleString('zh-TW', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
+})
 </script>
 
 <style scoped>

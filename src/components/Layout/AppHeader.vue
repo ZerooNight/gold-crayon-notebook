@@ -9,7 +9,7 @@
       </div>
 
       <div class="nav-actions">
-        <GoogleSyncButton />
+        <!-- <GoogleSyncButton /> -->
         
         <button 
           class="icon-btn" 
@@ -35,7 +35,7 @@
 import { computed } from 'vue'
 import { useThemeStore } from '@/stores/theme'
 import LanguageSelector from './LanguageSelector.vue'
-import GoogleSyncButton from './GoogleSyncButton.vue'
+// import GoogleSyncButton from './GoogleSyncButton.vue'
 import { getAssetUrl } from '@/utils/assets'
 
 const themeStore = useThemeStore()
