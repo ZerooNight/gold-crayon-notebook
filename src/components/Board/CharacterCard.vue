@@ -167,7 +167,7 @@ function handleImageError(event: Event) {
 /* 角色名字樣式 */
 .character-name {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: #ffffff;
   background: rgba(0, 0, 0, 0.65);
@@ -348,7 +348,7 @@ function handleImageError(event: Event) {
 /* 手機端優化 */
 @media (max-width: 768px) {
   .character-name {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     padding: 1px 3px;
     margin: 2px 2px 1px 2px;
   }
