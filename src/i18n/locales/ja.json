@@ -1,0 +1,180 @@
+{
+  "nav": {
+    "title": "Trickcal ツール",
+    "home": "ホーム",
+    "board": "クレヨンボード",
+    "sweep": "スイープツール",
+    "food": "食べ物の好み",
+    "settings": "設定",
+    "theme": "テーマ切替",
+    "language": "日本語",
+    "selectTool": "ツール選択",
+    "homeDescription": "ツール集ホーム",
+    "boardDescription": "キャラクター管理とセル統計",
+    "sweepDescription": "素材計算機",
+    "foodDescription": "キャラクターの食べ物の好みを確認"
+  },
+  "hero": {
+    "eyebrow": "Trickcal ツール",
+    "title": "便利なツール",
+    "description": "シンプルで便利"
+  },
+  "tools": {
+    "heading": "ツール一覧",
+    "board": {
+      "name": "ゴールドクレヨンボード",
+      "description": "キャラクターの所有状況を管理し、ボードの進捗を追跡し、ボーナスを計算します。"
+    },
+    "sweep": {
+      "name": "スイープツール",
+      "description": "素材の必要量と毎日のスイープルートを計算してエネルギーを節約します。"
+    },
+    "food": {
+      "name": "食べ物の好み",
+      "description": "キャラクターの食べ物の好みを確認し、各キャラクターが好きな食べ物を発見します。"
+    }
+  },
+  "layers": {
+    "layer1": "第1層",
+    "layer2": "第2層",
+    "layer3": "第3層"
+  },
+  "cellTypes": {
+    "attack": "攻撃力",
+    "crit": "クリティカル",
+    "hp": "HP",
+    "critResist": "クリティカル抵抗",
+    "defense": "防御力"
+  },
+  "board": {
+    "layerPanel": "レイヤーパネル",
+    "statsPanel": "統計パネル"
+  },
+  "panel": {
+    "layerSummary": "層の概要",
+    "activated": "アクティブ",
+    "activationRate": "有効化",
+    "totalBonus": "合計ボーナス",
+    "ownershipStats": "所有統計",
+    "ownedCharacters": "所有キャラクター",
+    "ownershipRate": "所有率",
+    "activatedCells": "アクティブセル",
+    "cellCompletionRate": "セル完了率",
+    "resourceSummary": "リソース概要",
+    "currentLayerNeed": "現在の層の必要量",
+    "allLayersNeed": "全層の必要量",
+    "currentLayerBonus": "現在の層のボーナス",
+    "allLayersBonus": "全層のボーナス"
+  },
+  "settings": {
+    "title": "キャラクター設定",
+    "description": "キャラクターをクリックして所有状態を切り替え",
+    "selectAll": "すべて選択",
+    "resetAll": "すべてリセット",
+    "close": "閉じる",
+    "confirmReset": "すべての進捗をリセットしますか？"
+  },
+  "footer": {
+    "costPerCell": "セルあたりのコスト",
+    "bonusPerCell": "セルあたりのボーナス",
+    "totalBonus": "合計ボーナス",
+    "crayonsNeeded": "必要なクレヨン",
+    "author": "作成者",
+    "copyright": "版権",
+    "usageCount": "総使用回数",
+    "wiki": "ゲーム Wiki"
+  },
+  "wiki": {
+    "title": "ゲーム Wiki",
+    "description": "プレイヤーが制作したゲーム Wiki サイトで、キャラクター図鑑、アイテム図鑑、攻略などの豊富なコンテンツを含みます。",
+    "visit": "Wiki へ"
+  },
+  "catalog": {
+    "title": "素材カタログ",
+    "page": "{current} / {total} ページ",
+    "searchLabel": "クイック検索",
+    "searchPlaceholder": "素材名を入力",
+    "clear": "選択をクリア",
+    "rankFilter": "Rank フィルター",
+    "rankFilterToggle": "フィルター切替",
+    "selectAllRanks": "すべての Rank",
+    "selectRank": "Rank {rank}"
+  },
+  "plan": {
+    "title": "最適エネルギープラン",
+    "empty": "素材が選択されていません",
+    "summary": "合計 {stages} ステージ",
+    "detailSummary": "ステージ詳細",
+    "energyPerStage": "エネルギー {energy}",
+    "warning": "{count} 個の素材が一致しません、データを確認してください",
+    "alternativeStagesHint": "💡 装備設計図も一緒に集めたい場合は、以下のステージを検討してください："
+  },
+  "errors": {
+    "noData": "表示するデータがありません"
+  },
+  "changelog": {
+    "title": "変更履歴"
+  },
+  "food": {
+    "characters": "キャラクター",
+    "foods": "食べ物",
+    "clear": "選択をクリア",
+    "searchCharacter": "キャラクター検索",
+    "searchCharacterPlaceholder": "キャラクター名を入力",
+    "searchFood": "食べ物検索",
+    "searchFoodPlaceholder": "食べ物名を入力",
+    "preferences": {
+      "veryLike": "大好き",
+      "like": "好き",
+      "dislike": "嫌い"
+    },
+    "items": {
+      "UFC炸胡蘿蔔": "UFC揚げニンジン",
+      "一口草生菜包": "草レタス包み",
+      "一碗米飯": "ご飯一杯",
+      "南瓜濃湯": "カボチャスープ",
+      "哈蜜瓜博孔奇尼起司": "メロンボッコンチーニチーズ",
+      "太空食品": "宇宙食",
+      "寶石塔": "宝石の塔",
+      "巧克力冰淇淋": "チョコレートアイス",
+      "幽靈布丁": "ゴーストプリン",
+      "扭結麵包": "プレッツェルパン",
+      "棉花糖馬卡龍": "マシュマロマカロン",
+      "椰子松針粥": "ココナッツ松葉粥",
+      "檸檬茶": "レモンティー",
+      "海藻沙拉": "海藻サラダ",
+      "溫熱的冰美式咖啡": "温かいアイスアメリカーノ",
+      "烤漫畫肉": "焼きマンガ肉",
+      "焦糖布丁": "キャラメルプリン",
+      "焦糖爆米花": "キャラメルポップコーン",
+      "獸糧罐頭": "獣飼料缶詰",
+      "石榴果實": "ザクロの実",
+      "秘密葡萄汁": "秘密のブドウジュース",
+      "空氣炸豬排": "エアフライポークカツ",
+      "肉桂口味糖果": "シナモンキャンディ",
+      "草莓蛋糕": "ストロベリーケーキ",
+      "薄荷巧克力冰淇淋": "ミントチョコアイス",
+      "蜂蜜大蒜鮭魚": "ハニーガーリックサーモン",
+      "蜂蜜罐": "ハチミツ瓶",
+      "金糖葫蘆": "金の飴細工",
+      "麵茶": "麦茶",
+      "龍族糖果": "ドラゴンキャンディ"
+    }
+  },
+  "sync": {
+    "signIn": "Google でログイン",
+    "signOut": "ログアウト",
+    "syncing": "同期中...",
+    "lastSync": "最終同期：{time}",
+    "notSynced": "まだ同期していません",
+    "uploadToCloud": "クラウドにバックアップ",
+    "restoreFromCloud": "クラウドから復元",
+    "uploadSuccess": "バックアップ成功！",
+    "uploadFailed": "バックアップ失敗：{error}",
+    "restoreSuccess": "復元成功！",
+    "restoreFailed": "復元失敗：{error}",
+    "signInFailed": "ログイン失敗：{error}",
+    "signOutFailed": "ログアウト失敗：{error}"
+  }
+}
+

@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "title": "Trickcal Tools",
+    "home": "Home",
+    "board": "Crayon Board",
+    "sweep": "Sweep Tool",
+    "food": "Food Preferences",
+    "settings": "Settings",
+    "theme": "Toggle Theme",
+    "language": "English",
+    "selectTool": "Select Tool",
+    "homeDescription": "Tool Collection Homepage",
+    "boardDescription": "Character Management & Cell Statistics",
+    "sweepDescription": "Material Requirement Calculator",
+    "foodDescription": "Character Food Preference Query",
+    "editor": "Character Editor",
+    "editorDescription": "Customize and manage character cell configurations"
+  },
+  "hero": {
+    "eyebrow": "Trickcal Tools",
+    "title": "Useful Tools",
+    "description": "Simple and convenient"
+  },
+  "tools": {
+    "heading": "Tools",
+    "board": {
+      "name": "Golden Crayon Board",
+      "description": "Manage character ownership, track board progress, and calculate bonuses."
+    },
+    "sweep": {
+      "name": "Sweep Tool",
+      "description": "Calculate material requirements and daily sweep routes to save energy."
+    },
+    "food": {
+      "name": "Food Preferences",
+      "description": "Look up character food preferences and discover what each character likes."
+    }
+  },
+  "layers": {
+    "layer1": "Layer 1",
+    "layer2": "Layer 2",
+    "layer3": "Layer 3"
+  },
+  "cellTypes": {
+    "attack": "Attack",
+    "crit": "Crit",
+    "hp": "HP",
+    "critResist": "Crit Resist",
+    "defense": "Defense"
+  },
+  "board": {
+    "layerPanel": "Layer Panel",
+    "statsPanel": "Stats Panel"
+  },
+  "panel": {
+    "layerSummary": "Layer Summary",
+    "activated": "Activated",
+    "activationRate": "Activated",
+    "totalBonus": "Total Bonus",
+    "ownershipStats": "Ownership Stats",
+    "ownedCharacters": "Owned Characters",
+    "ownershipRate": "Ownership Rate",
+    "activatedCells": "Activated Cells",
+    "cellCompletionRate": "Cell Completion",
+    "resourceSummary": "Resource Summary",
+    "currentLayerNeed": "Current Layer Need",
+    "allLayersNeed": "All Layers Need",
+    "currentLayerBonus": "Current Layer Bonus",
+    "allLayersBonus": "All Layers Bonus"
+  },
+  "settings": {
+    "title": "Character Settings",
+    "description": "Click character to toggle ownership",
+    "selectAll": "Select All",
+    "resetAll": "Reset All",
+    "close": "Close",
+    "confirmReset": "Reset all progress?"
+  },
+  "footer": {
+    "costPerCell": "Cost per Cell",
+    "bonusPerCell": "Bonus per Cell",
+    "totalBonus": "Total Bonus",
+    "crayonsNeeded": "Crayons Needed",
+    "author": "Author",
+    "copyright": "Copyright",
+    "usageCount": "Total Usage",
+    "wiki": "Game Wiki"
+  },
+  "wiki": {
+    "title": "Game Wiki",
+    "description": "A player-made game Wiki website with character guides, item catalogs, strategies, and more.",
+    "visit": "Visit Wiki"
+  },
+  "catalog": {
+    "title": "Material Catalog",
+    "page": "Page {current} / {total}",
+    "searchLabel": "Quick Search",
+    "searchPlaceholder": "Enter material name",
+    "clear": "Clear Selection",
+    "rankFilter": "Rank Filter",
+    "rankFilterToggle": "Toggle Filter",
+    "selectAllRanks": "All Ranks",
+    "selectRank": "Rank {rank}"
+  },
+  "plan": {
+    "title": "Optimal Energy Plan",
+    "empty": "No materials selected",
+    "summary": "Total {stages} stages",
+    "detailSummary": "Stage Details",
+    "energyPerStage": "Energy {energy}",
+    "warning": "{count} materials cannot be matched, please check data",
+    "alternativeStagesHint": "💡 If you want to farm equipment blueprints too, consider these stages:"
+  },
+  "errors": {
+    "noData": "No data to display"
+  },
+  "food": {
+    "characters": "Characters",
+    "foods": "Foods",
+    "clear": "Clear Selection",
+    "searchCharacter": "Search Characters",
+    "searchCharacterPlaceholder": "Enter character name",
+    "searchFood": "Search Foods",
+    "searchFoodPlaceholder": "Enter food name",
+    "preferences": {
+      "veryLike": "Love",
+      "like": "Like",
+      "dislike": "Dislike"
+    },
+    "items": {
+      "UFC炸胡蘿蔔": "UFC Fried Carrot",
+      "一口草生菜包": "Grass Lettuce Wrap",
+      "一碗米飯": "Bowl of Rice",
+      "南瓜濃湯": "Pumpkin Soup",
+      "哈蜜瓜博孔奇尼起司": "Melon Bocconcini Cheese",
+      "太空食品": "Space Food",
+      "寶石塔": "Gem Tower",
+      "巧克力冰淇淋": "Chocolate Ice Cream",
+      "幽靈布丁": "Ghost Pudding",
+      "扭結麵包": "Pretzel Bread",
+      "棉花糖馬卡龍": "Marshmallow Macaron",
+      "椰子松針粥": "Coconut Pine Needle Porridge",
+      "檸檬茶": "Lemon Tea",
+      "海藻沙拉": "Seaweed Salad",
+      "溫熱的冰美式咖啡": "Warm Iced Americano",
+      "烤漫畫肉": "Grilled Manga Meat",
+      "焦糖布丁": "Caramel Pudding",
+      "焦糖爆米花": "Caramel Popcorn",
+      "獸糧罐頭": "Beast Feed Can",
+      "石榴果實": "Pomegranate Fruit",
+      "秘密葡萄汁": "Secret Grape Juice",
+      "空氣炸豬排": "Air-Fried Pork Cutlet",
+      "肉桂口味糖果": "Cinnamon Candy",
+      "草莓蛋糕": "Strawberry Cake",
+      "薄荷巧克力冰淇淋": "Mint Chocolate Ice Cream",
+      "蜂蜜大蒜鮭魚": "Honey Garlic Salmon",
+      "蜂蜜罐": "Honey Jar",
+      "金糖葫蘆": "Golden Candied Fruit",
+      "麵茶": "Wheat Tea",
+      "龍族糖果": "Dragon Candy"
+    }
+  },
+  "changelog": {
+    "title": "Changelog"
+  },
+  "sync": {
+    "signIn": "Sign in with Google",
+    "signOut": "Sign out",
+    "syncing": "Syncing...",
+    "lastSync": "Last sync: {time}",
+    "notSynced": "Not synced yet",
+    "uploadToCloud": "Backup to Cloud",
+    "restoreFromCloud": "Restore from Cloud",
+    "uploadSuccess": "Backup successful!",
+    "uploadFailed": "Backup failed: {error}",
+    "restoreSuccess": "Restore successful!",
+    "restoreFailed": "Restore failed: {error}",
+    "signInFailed": "Sign in failed: {error}",
+    "signOutFailed": "Sign out failed: {error}"
+  },
+  "editor": {
+    "eyebrow": "Character Editor",
+    "title": "Customize and Manage Characters",
+    "description": "Since the author stopped updating, players can add or edit characters and their board cell configurations here. All changes are saved locally in the browser.",
+    "import": "Import Data",
+    "export": "Export Data",
+    "resetAll": "Reset to Default",
+    "searchPlaceholder": "Search character name...",
+    "allPersonality": "All Personalities",
+    "allRole": "All Roles",
+    "addCharacter": "Add Character",
+    "edit": "Edit",
+    "delete": "Delete",
+    "editTitle": "Edit Character Data",
+    "addTitle": "Add Character Data",
+    "fieldName": "Chinese Name",
+    "fieldEnName": "English Name",
+    "fieldStars": "Star Rating",
+    "fieldPersonality": "Personality/Attribute",
+    "fieldAttackType": "Attack Type",
+    "fieldDeployRow": "Position",
+    "fieldRole": "Role",
+    "fieldRace": "Race",
+    "fieldAvatar": "Character Avatar Settings",
+    "avatarUrl": "External Image URL",
+    "avatarUpload": "Upload Local Image",
+    "boardConfig": "Crayon Board Cell Configuration",
+    "save": "Save Character"
+  }
+}
+

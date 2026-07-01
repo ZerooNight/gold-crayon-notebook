@@ -1,0 +1,180 @@
+{
+  "nav": {
+    "title": "Trickcal 도구",
+    "home": "홈",
+    "board": "크레용 보드",
+    "sweep": "스윕 도구",
+    "food": "음식 선호도",
+    "settings": "설정",
+    "theme": "테마 전환",
+    "language": "한국어",
+    "selectTool": "도구 선택",
+    "homeDescription": "도구 모음 홈페이지",
+    "boardDescription": "캐릭터 관리 및 셀 통계",
+    "sweepDescription": "재료 요구 사항 계산기",
+    "foodDescription": "캐릭터 음식 선호도 조회"
+  },
+  "hero": {
+    "eyebrow": "Trickcal 도구",
+    "title": "유용한 도구",
+    "description": "간단하고 편리함"
+  },
+  "tools": {
+    "heading": "도구 목록",
+    "board": {
+      "name": "골드 크레용 보드",
+      "description": "캐릭터 소유 상태를 관리하고 보드 진행 상황을 추적하며 보너스를 계산합니다."
+    },
+    "sweep": {
+      "name": "스윕 도구",
+      "description": "재료 요구 사항과 일일 스윕 경로를 계산하여 에너지를 절약합니다."
+    },
+    "food": {
+      "name": "음식 선호도",
+      "description": "캐릭터의 음식 선호도를 조회하고 각 캐릭터가 좋아하는 음식을 발견하세요."
+    }
+  },
+  "layers": {
+    "layer1": "레이어 1",
+    "layer2": "레이어 2",
+    "layer3": "레이어 3"
+  },
+  "cellTypes": {
+    "attack": "공격력",
+    "crit": "치명타",
+    "hp": "HP",
+    "critResist": "치명타 저항",
+    "defense": "방어력"
+  },
+  "board": {
+    "layerPanel": "레이어 패널",
+    "statsPanel": "통계 패널"
+  },
+  "panel": {
+    "layerSummary": "레이어 요약",
+    "activated": "활성화됨",
+    "activationRate": "활성화",
+    "totalBonus": "총 보너스",
+    "ownershipStats": "소유 통계",
+    "ownedCharacters": "소유 캐릭터",
+    "ownershipRate": "소유율",
+    "activatedCells": "활성화된 셀",
+    "cellCompletionRate": "셀 완료율",
+    "resourceSummary": "리소스 요약",
+    "currentLayerNeed": "현재 레이어 필요량",
+    "allLayersNeed": "모든 레이어 필요량",
+    "currentLayerBonus": "현재 레이어 보너스",
+    "allLayersBonus": "모든 레이어 보너스"
+  },
+  "settings": {
+    "title": "캐릭터 설정",
+    "description": "캐릭터를 클릭하여 소유 상태 전환",
+    "selectAll": "모두 선택",
+    "resetAll": "모두 초기화",
+    "close": "닫기",
+    "confirmReset": "모든 진행 상황을 초기화하시겠습니까?"
+  },
+  "footer": {
+    "costPerCell": "셀당 비용",
+    "bonusPerCell": "셀당 보너스",
+    "totalBonus": "총 보너스",
+    "crayonsNeeded": "필요한 크레용",
+    "author": "작성자",
+    "copyright": "저작권",
+    "usageCount": "총 사용 횟수",
+    "wiki": "게임 Wiki"
+  },
+  "wiki": {
+    "title": "게임 Wiki",
+    "description": "플레이어가 제작한 게임 Wiki 사이트로 캐릭터 도감, 아이템 도감, 공략 등 풍부한 내용을 포함합니다.",
+    "visit": "Wiki 방문"
+  },
+  "catalog": {
+    "title": "재료 카탈로그",
+    "page": "{current} / {total} 페이지",
+    "searchLabel": "빠른 검색",
+    "searchPlaceholder": "재료 이름 입력",
+    "clear": "선택 지우기",
+    "rankFilter": "Rank 필터",
+    "rankFilterToggle": "필터 토글",
+    "selectAllRanks": "모든 Rank",
+    "selectRank": "Rank {rank}"
+  },
+  "plan": {
+    "title": "최적 에너지 계획",
+    "empty": "선택한 재료가 없습니다",
+    "summary": "총 {stages} 스테이지",
+    "detailSummary": "스테이지 세부 정보",
+    "energyPerStage": "에너지 {energy}",
+    "warning": "{count} 개의 재료가 일치하지 않습니다, 데이터를 확인하세요",
+    "alternativeStagesHint": "💡 장비 설계도도 함께 수집하고 싶다면 다음 스테이지를 고려하세요:"
+  },
+  "errors": {
+    "noData": "표시할 데이터가 없습니다"
+  },
+  "changelog": {
+    "title": "변경 로그"
+  },
+  "food": {
+    "characters": "캐릭터",
+    "foods": "음식",
+    "clear": "선택 지우기",
+    "searchCharacter": "캐릭터 검색",
+    "searchCharacterPlaceholder": "캐릭터 이름 입력",
+    "searchFood": "음식 검색",
+    "searchFoodPlaceholder": "음식 이름 입력",
+    "preferences": {
+      "veryLike": "매우 좋아함",
+      "like": "좋아함",
+      "dislike": "싫어함"
+    },
+    "items": {
+      "UFC炸胡蘿蔔": "UFC 튀긴 당근",
+      "一口草生菜包": "한입 풀상추쌈",
+      "一碗米飯": "밥 한 그릇",
+      "南瓜濃湯": "호박 스프",
+      "哈蜜瓜博孔奇尼起司": "멜론 보코치니 치즈",
+      "太空食品": "우주 식품",
+      "寶石塔": "보석 탑",
+      "巧克力冰淇淋": "초콜릿 아이스크림",
+      "幽靈布丁": "유령 푸딩",
+      "扭結麵包": "프레첼 빵",
+      "棉花糖馬卡龍": "마시멜로 마카롱",
+      "椰子松針粥": "코코넛 솔잎죽",
+      "檸檬茶": "레몬차",
+      "海藻沙拉": "해조류 샐러드",
+      "溫熱的冰美式咖啡": "따뜻한 아이스 아메리카노",
+      "烤漫畫肉": "구운 만화 고기",
+      "焦糖布丁": "캐러멜 푸딩",
+      "焦糖爆米花": "캐러멜 팝콘",
+      "獸糧罐頭": "사료 캔",
+      "石榴果實": "석류 열매",
+      "秘密葡萄汁": "비밀 포도 주스",
+      "空氣炸豬排": "에어프라이 돈까스",
+      "肉桂口味糖果": "시나몬 사탕",
+      "草莓蛋糕": "딸기 케이크",
+      "薄荷巧克力冰淇淋": "민트초코 아이스크림",
+      "蜂蜜大蒜鮭魚": "허니갈릭 연어",
+      "蜂蜜罐": "꿀단지",
+      "金糖葫蘆": "황금 탕후루",
+      "麵茶": "밀차",
+      "龍族糖果": "드래곤 캔디"
+    }
+  },
+  "sync": {
+    "signIn": "Google 로그인",
+    "signOut": "로그아웃",
+    "syncing": "동기화 중...",
+    "lastSync": "마지막 동기화: {time}",
+    "notSynced": "아직 동기화되지 않음",
+    "uploadToCloud": "클라우드에 백업",
+    "restoreFromCloud": "클라우드에서 복원",
+    "uploadSuccess": "백업 성공!",
+    "uploadFailed": "백업 실패: {error}",
+    "restoreSuccess": "복원 성공!",
+    "restoreFailed": "복원 실패: {error}",
+    "signInFailed": "로그인 실패: {error}",
+    "signOutFailed": "로그아웃 실패: {error}"
+  }
+}
+

@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "title": "Trickcal 工具集",
+    "home": "首頁",
+    "board": "金蠟筆筆記本",
+    "sweep": "掃蕩工具",
+    "food": "食物喜好",
+    "settings": "設置",
+    "theme": "切換主題",
+    "language": "繁體中文",
+    "selectTool": "選擇工具",
+    "homeDescription": "工具集首頁",
+    "boardDescription": "角色管理與格子統計",
+    "sweepDescription": "素材需求計算",
+    "foodDescription": "角色食物喜好查詢",
+    "editor": "角色編輯器",
+    "editorDescription": "自定義與管理角色格子配置"
+  },
+  "hero": {
+    "eyebrow": "Trickcal 工具集",
+    "title": "各種實用工具",
+    "description": "簡單使用，方便快捷"
+  },
+  "tools": {
+    "heading": "工具列表",
+    "board": {
+      "name": "金蠟筆記錄本",
+      "description": "整理角色擁有狀態、確認著色版格子需求與加成統計。"
+    },
+    "sweep": {
+      "name": "掃蕩工具",
+      "description": "計算素材需求與每日掃蕩路線，協助節省體力。"
+    },
+    "food": {
+      "name": "食物喜好",
+      "description": "查詢角色的食物喜好，了解每個角色喜歡什麼食物。"
+    }
+  },
+  "layers": {
+    "layer1": "第一層",
+    "layer2": "第二層",
+    "layer3": "第三層"
+  },
+  "cellTypes": {
+    "attack": "攻擊力",
+    "crit": "暴擊",
+    "hp": "HP",
+    "critResist": "暴擊抵抗",
+    "defense": "防禦力"
+  },
+  "board": {
+    "layerPanel": "層級選擇",
+    "statsPanel": "統計資訊"
+  },
+  "panel": {
+    "layerSummary": "層級總覽",
+    "activated": "已啟動",
+    "activationRate": "已啟動",
+    "totalBonus": "層級總加成",
+    "ownershipStats": "角色擁有概況",
+    "ownedCharacters": "已擁有角色",
+    "ownershipRate": "擁有率",
+    "activatedCells": "已啟動格子",
+    "cellCompletionRate": "格子完成率",
+    "resourceSummary": "資源需求",
+    "currentLayerNeed": "當前層級需求",
+    "allLayersNeed": "全部層級需求",
+    "currentLayerBonus": "當前層級總加成",
+    "allLayersBonus": "全部層級總加成"
+  },
+  "settings": {
+    "title": "角色設置",
+    "description": "點擊角色圖片設定為已擁有/未擁有",
+    "selectAll": "全選",
+    "resetAll": "重置全部",
+    "close": "關閉",
+    "confirmReset": "確定要重置所有進度嗎？"
+  },
+  "footer": {
+    "costPerCell": "每格成本",
+    "bonusPerCell": "每格加成",
+    "totalBonus": "總加成",
+    "crayonsNeeded": "所需金蠟筆",
+    "author": "工具製作",
+    "copyright": "遊戲版權",
+    "usageCount": "總使用次數",
+    "wiki": "遊戲 Wiki"
+  },
+  "wiki": {
+    "title": "遊戲 Wiki",
+    "description": "由玩家製作的遊戲 Wiki 網站，包含角色圖鑑、道具圖鑑、攻略等豐富內容。",
+    "visit": "前往 Wiki"
+  },
+  "catalog": {
+    "title": "素材圖鑑",
+    "page": "第 {current} / {total} 頁",
+    "searchLabel": "快速搜尋",
+    "searchPlaceholder": "輸入素材名稱",
+    "clear": "清除選擇",
+    "rankFilter": "Rank 篩選",
+    "rankFilterToggle": "展開/收起篩選",
+    "selectAllRanks": "全部 Rank",
+    "selectRank": "Rank {rank}"
+  },
+  "plan": {
+    "title": "最省體力方案",
+    "empty": "尚未選擇任何素材",
+    "summary": "共需 {stages} 個關卡",
+    "detailSummary": "關卡細節",
+    "energyPerStage": "體力 {energy}",
+    "warning": "有 {count} 個素材無法匹配任一關卡，請檢查資料",
+    "alternativeStagesHint": "💡 若想順便刷其他裝備圖紙，可以考慮以下關卡："
+  },
+  "errors": {
+    "noData": "無資料可顯示"
+  },
+  "food": {
+    "characters": "角色",
+    "foods": "食物",
+    "clear": "清除選擇",
+    "searchCharacter": "搜尋角色",
+    "searchCharacterPlaceholder": "輸入角色名稱",
+    "searchFood": "搜尋食物",
+    "searchFoodPlaceholder": "輸入食物名稱",
+    "preferences": {
+      "veryLike": "非常喜歡",
+      "like": "喜歡",
+      "dislike": "不喜歡"
+    },
+    "items": {
+      "UFC炸胡蘿蔔": "UFC炸胡蘿蔔",
+      "一口草生菜包": "一口草生菜包",
+      "一碗米飯": "一碗米飯",
+      "南瓜濃湯": "南瓜濃湯",
+      "哈蜜瓜博孔奇尼起司": "哈蜜瓜博孔奇尼起司",
+      "太空食品": "太空食品",
+      "寶石塔": "寶石塔",
+      "巧克力冰淇淋": "巧克力冰淇淋",
+      "幽靈布丁": "幽靈布丁",
+      "扭結麵包": "扭結麵包",
+      "棉花糖馬卡龍": "棉花糖馬卡龍",
+      "椰子松針粥": "椰子松針粥",
+      "檸檬茶": "檸檬茶",
+      "海藻沙拉": "海藻沙拉",
+      "溫熱的冰美式咖啡": "溫熱的冰美式咖啡",
+      "烤漫畫肉": "烤漫畫肉",
+      "焦糖布丁": "焦糖布丁",
+      "焦糖爆米花": "焦糖爆米花",
+      "獸糧罐頭": "獸糧罐頭",
+      "石榴果實": "石榴果實",
+      "秘密葡萄汁": "秘密葡萄汁",
+      "空氣炸豬排": "空氣炸豬排",
+      "肉桂口味糖果": "肉桂口味糖果",
+      "草莓蛋糕": "草莓蛋糕",
+      "薄荷巧克力冰淇淋": "薄荷巧克力冰淇淋",
+      "蜂蜜大蒜鮭魚": "蜂蜜大蒜鮭魚",
+      "蜂蜜罐": "蜂蜜罐",
+      "金糖葫蘆": "金糖葫蘆",
+      "麵茶": "麵茶",
+      "龍族糖果": "龍族糖果"
+    }
+  },
+  "changelog": {
+    "title": "開發日誌"
+  },
+  "sync": {
+    "signIn": "Google 登入",
+    "signOut": "登出",
+    "syncing": "同步中...",
+    "lastSync": "最後同步：{time}",
+    "notSynced": "尚未同步",
+    "uploadToCloud": "備份到雲端",
+    "restoreFromCloud": "從雲端恢復",
+    "uploadSuccess": "備份成功！",
+    "uploadFailed": "備份失敗：{error}",
+    "restoreSuccess": "恢復成功！",
+    "restoreFailed": "恢復失敗：{error}",
+    "signInFailed": "登入失敗：{error}",
+    "signOutFailed": "登出失敗：{error}"
+  },
+  "editor": {
+    "eyebrow": "角色編輯器",
+    "title": "自定義與管理角色資料",
+    "description": "作者停止更新後，教主可在此處自行新增或編輯角色及其著色板格子配置。所有變更均會儲存在本地瀏覽器中。",
+    "import": "匯入數據",
+    "export": "匯出數據",
+    "resetAll": "重置為官方預設",
+    "searchPlaceholder": "搜尋角色名稱...",
+    "allPersonality": "所有屬性",
+    "allRole": "所有定位",
+    "addCharacter": "新增角色",
+    "edit": "編輯",
+    "delete": "刪除",
+    "editTitle": "編輯角色資料",
+    "addTitle": "新增角色資料",
+    "fieldName": "中文名稱",
+    "fieldEnName": "英文名稱",
+    "fieldStars": "星級",
+    "fieldPersonality": "屬性/性格",
+    "fieldAttackType": "攻擊類型",
+    "fieldDeployRow": "站位",
+    "fieldRole": "定位",
+    "fieldRace": "種族",
+    "fieldAvatar": "角色頭像設置",
+    "avatarUrl": "外部圖片網址",
+    "avatarUpload": "上傳本地圖片",
+    "boardConfig": "著色板 (Board) 屬性格子配置",
+    "save": "儲存角色"
+  }
+}
+

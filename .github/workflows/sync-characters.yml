@@ -1,0 +1,42 @@
+name: Sync Characters from Strategy Site
+
+on:
+  schedule:
+    # 每個星期天早上 0:00 執行
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # 允許手動觸發
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run sync script
+        run: node scripts/sync-characters.cjs
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 檢查是否有檔案變更
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "檢測到資料更新，正在提交..."
+            git add .
+            git commit -m "chore: auto-sync new characters from strategy site"
+            git push
+          else
+            echo "無檔案變更，不需要更新。"
+          fi
