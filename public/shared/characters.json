@@ -99,16 +99,6 @@
     "role": "坦克",
     "race": "妖精"
   },
-  "橋菲": {
-    "name": "橋菲",
-    "en": "Chopi",
-    "personality": "憂鬱",
-    "stars": 2,
-    "attackType": "物理",
-    "deployRow": "中排",
-    "role": "輸出",
-    "race": "獸人"
-  },
   "路易": {
     "name": "路易",
     "en": "Kyuri",
@@ -518,16 +508,6 @@
     "deployRow": "後排",
     "role": "輸出",
     "race": "獸人"
-  },
-  "xX錫安Xx": {
-    "name": "xX錫安Xx",
-    "en": "xXionx",
-    "personality": "憂鬱",
-    "stars": 3,
-    "attackType": "物理",
-    "deployRow": "後排",
-    "role": "輸出",
-    "race": "幽靈"
   },
   "優米": {
     "name": "優米",

@@ -170,23 +170,6 @@
         "defense"
       ]
     },
-    "橋菲": {
-      "layer1": [
-        "critResist",
-        "defense"
-      ],
-      "layer2": [
-        "attack",
-        "crit",
-        "hp"
-      ],
-      "layer3": [
-        "attack",
-        "hp",
-        "defense",
-        "critResist"
-      ]
-    },
     "路易": {
       "layer1": [
         "attack",
@@ -882,23 +865,6 @@
         "crit",
         "hp",
         "defense"
-      ]
-    },
-    "xX錫安Xx": {
-      "layer1": [
-        "critResist",
-        "defense"
-      ],
-      "layer2": [
-        "attack",
-        "crit",
-        "hp"
-      ],
-      "layer3": [
-        "attack",
-        "hp",
-        "defense",
-        "critResist"
       ]
     },
     "優米": {
