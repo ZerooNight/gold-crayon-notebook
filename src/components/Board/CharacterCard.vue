@@ -7,6 +7,9 @@
       [`personality-${personalityClass}`]: true
     }"
   >
+    <!-- 角色名字（有底色，依語言變更） -->
+    <div class="character-name">{{ displayName }}</div>
+
     <div class="character-avatar">
       <img 
         :src="getCharacterImageUrl(character.name)" 
@@ -69,6 +72,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useBoardStore } from '@/stores/board'
 import type { Character } from '@/stores/board'
 import { getAssetUrl, getCharacterImageUrl, getIconUrl } from '@/utils/assets'
@@ -78,7 +82,16 @@ const props = defineProps<{
   cellType: string
 }>()
 
+const { locale } = useI18n()
 const boardStore = useBoardStore()
+
+// 根據語言選取顯示名稱
+const displayName = computed(() => {
+  if (locale.value.startsWith('en')) {
+    return props.character.en || props.character.name
+  }
+  return props.character.name
+})
 
 const isOwned = computed(() => 
   boardStore.userProgress.ownedCharacters.has(props.character.name)
@@ -147,6 +160,26 @@ function handleImageError(event: Event) {
   padding: 0;
   transition: all 0.2s ease;
   overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 角色名字樣式 */
+.character-name {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 2px 4px;
+  margin: 3px 3px 2px 3px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 2;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* 未獲得角色卡片 - 淺色灰暗效果 */
@@ -226,11 +259,11 @@ function handleImageError(event: Event) {
 }
 
 .character-avatar {
-  width: 100%;
+  width: calc(100% - 6px);
   aspect-ratio: 1;
   background: var(--secondary-bg, rgba(0, 0, 0, 0.05));
   border-radius: 4px;
-  margin: 0;
+  margin: 0 3px 3px 3px;
   display: block;
   font-size: 1.5rem;
   color: var(--text-muted);
@@ -260,7 +293,7 @@ function handleImageError(event: Event) {
 
 .character-stars {
   position: absolute;
-  bottom: 2px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -278,8 +311,8 @@ function handleImageError(event: Event) {
 
 .character-icons-left {
   position: absolute;
-  bottom: 20px;
-  left: 3px;
+  bottom: 23px;
+  left: 5px;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -297,8 +330,8 @@ function handleImageError(event: Event) {
 
 .character-icons-right {
   position: absolute;
-  bottom: 20px;
-  right: 3px;
+  bottom: 23px;
+  right: 5px;
   display: flex;
   z-index: 5;
 }
@@ -314,6 +347,17 @@ function handleImageError(event: Event) {
 
 /* 手機端優化 */
 @media (max-width: 768px) {
+  .character-name {
+    font-size: 0.6875rem;
+    padding: 1px 3px;
+    margin: 2px 2px 1px 2px;
+  }
+  
+  .character-avatar {
+    width: calc(100% - 4px);
+    margin: 0 2px 2px 2px;
+  }
+
   .star-icon {
     width: 14px;
     height: 14px;
@@ -323,6 +367,20 @@ function handleImageError(event: Event) {
   .character-icons-right .char-icon {
     width: 16px;
     height: 16px;
+  }
+  
+  .character-icons-left {
+    bottom: 20px;
+    left: 4px;
+  }
+  
+  .character-icons-right {
+    bottom: 20px;
+    right: 4px;
+  }
+  
+  .character-stars {
+    bottom: 4px;
   }
 }
 
@@ -340,12 +398,12 @@ function handleImageError(event: Event) {
   
   .character-icons-left {
     bottom: 18px;
-    left: 2px;
+    left: 3px;
   }
   
   .character-icons-right {
     bottom: 18px;
-    right: 2px;
+    right: 3px;
   }
   
   .character-card.activated::before,
@@ -368,6 +426,3 @@ function handleImageError(event: Event) {
   }
 }
 </style>
-
-
-

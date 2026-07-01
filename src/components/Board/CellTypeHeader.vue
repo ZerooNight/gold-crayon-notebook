@@ -1,29 +1,52 @@
 <template>
-  <div class="cell-header">
-    <div class="cell-title">
-      <div class="cell-icon" :class="cellType">
-        <img 
-          :src="getAssetUrl(cellTypeData.icon)" 
-          :alt="$t(`cellTypes.${cellType}`)"
-          @error="handleImageError"
-        />
+  <div class="cell-header-container">
+    <div class="cell-header">
+      <div class="cell-title">
+        <div class="cell-icon" :class="cellType">
+          <img 
+            :src="getAssetUrl(cellTypeData.icon)" 
+            :alt="$t(`cellTypes.${cellType}`)"
+            @error="handleImageError"
+          />
+        </div>
+        <div>
+          <h3>{{ $t(`cellTypes.${cellType}`) }}</h3>
+          <span class="cell-total">{{ $t(`layers.${boardStore.currentLayer}`) }}</span>
+        </div>
       </div>
-      <div>
-        <h3>{{ $t(`cellTypes.${cellType}`) }}</h3>
-        <span class="cell-total">{{ $t(`layers.${boardStore.currentLayer}`) }}</span>
+      <div class="cell-stats">
+        <div class="cell-count">{{ activated }} / {{ total }}</div>
+        <div class="cell-sub">{{ $t('panel.activated') }}</div>
+        <div class="cell-percentages">
+          <span class="activation-rate">
+            {{ $t('panel.activationRate') }} {{ activationRate }}%
+          </span>
+          <span class="bonus-percent">
+            {{ $t('panel.totalBonus') }} +{{ totalBonusPercent }}%
+          </span>
+        </div>
       </div>
     </div>
-    <div class="cell-stats">
-      <div class="cell-count">{{ activated }} / {{ total }}</div>
-      <div class="cell-sub">{{ $t('panel.activated') }}</div>
-      <div class="cell-percentages">
-        <span class="activation-rate">
-          {{ $t('panel.activationRate') }} {{ activationRate }}%
-        </span>
-        <span class="percentage-divider">·</span>
-        <span class="bonus-percent">
-          {{ $t('panel.totalBonus') }} +{{ totalBonusPercent }}%
-        </span>
+
+    <!-- 自動移動到此處的統計數據列 -->
+    <div class="cell-extra-stats">
+      <div class="extra-item">
+        <img :src="getIconUrl('gold_crayon')" alt="金蠟筆" class="extra-icon" />
+        <span class="extra-label">{{ $t('footer.costPerCell') }}</span>
+        <span class="extra-value">{{ costPerCell }}</span>
+      </div>
+      <div class="extra-item">
+        <span class="extra-label">{{ $t('footer.bonusPerCell') }}</span>
+        <span class="extra-value bonus">+{{ bonusPerCell }}%</span>
+      </div>
+      <div class="extra-item">
+        <span class="extra-label">{{ $t('footer.totalBonus') }}</span>
+        <span class="extra-value bonus">+{{ totalBonus.toFixed(1) }}%</span>
+      </div>
+      <div class="extra-item">
+        <img :src="getIconUrl('gold_crayon')" alt="金蠟筆" class="extra-icon" />
+        <span class="extra-label">{{ $t('footer.crayonsNeeded') }}</span>
+        <span class="extra-value crayons">{{ crayonsNeeded }}</span>
       </div>
     </div>
   </div>
@@ -32,7 +55,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useBoardStore } from '@/stores/board'
-import { getAssetUrl } from '@/utils/assets'
+import { getAssetUrl, getIconUrl } from '@/utils/assets'
 
 const props = defineProps<{
   cellType: string
@@ -62,8 +85,38 @@ const activationRate = computed(() => {
 
 // 總加成百分比
 const totalBonusPercent = computed(() => {
-  const bonusPerCell = boardStore.boardData?.boardConfig[boardStore.currentLayer]?.bonusPerCell || 0
-  return (props.activated * bonusPerCell).toFixed(1)
+  const bonusPerCellVal = boardStore.boardData?.boardConfig[boardStore.currentLayer]?.bonusPerCell || 0
+  return (props.activated * bonusPerCellVal).toFixed(1)
+})
+
+// 每格成本
+const costMap: Record<string, number> = {
+  layer1: 2,
+  layer2: 4,
+  layer3: 6
+}
+const costPerCell = computed(() => {
+  return costMap[boardStore.currentLayer] || 2
+})
+
+// 每格加成
+const bonusPerCell = computed(() => {
+  const bonuses: Record<string, number> = {
+    layer1: 3,
+    layer2: 4,
+    layer3: 5
+  }
+  return bonuses[boardStore.currentLayer] || 3
+})
+
+// 總加成
+const totalBonus = computed(() => {
+  return props.activated * bonusPerCell.value
+})
+
+// 所需金蠟筆
+const crayonsNeeded = computed(() => {
+  return (props.total - props.activated) * costPerCell.value
 })
 
 function handleImageError(event: Event) {
@@ -73,13 +126,16 @@ function handleImageError(event: Event) {
 </script>
 
 <style scoped>
+.cell-header-container {
+  margin-bottom: 1rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
 .cell-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.875rem;
-  border-bottom: 1px solid var(--border-color);
   gap: 1rem;
 }
 
@@ -154,8 +210,46 @@ function handleImageError(event: Event) {
   font-weight: 600;
 }
 
-.percentage-divider {
-  display: none;
+/* 額外統計數據列樣式 */
+.cell-extra-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px dashed var(--border-color);
+  flex-wrap: wrap;
+}
+
+.extra-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.extra-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.extra-label {
+  font-weight: 500;
+}
+
+.extra-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.extra-value.bonus {
+  color: var(--success-color);
+}
+
+.extra-value.crayons {
+  color: var(--primary-color);
 }
 
 @media (max-width: 768px) {
@@ -187,22 +281,29 @@ function handleImageError(event: Event) {
   .cell-percentages {
     flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin-top: 0.375rem;
   }
 
-  .percentage-divider {
-    display: inline;
-    color: var(--text-secondary);
-    margin: 0 0.25rem;
+  .cell-extra-stats {
+    gap: 1rem;
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  
+  .extra-item {
+    font-size: 0.8125rem;
   }
 }
 
 @media (max-width: 480px) {
   .cell-percentages {
     font-size: 0.8125rem;
-    gap: 0.375rem;
+    gap: 0.5rem;
+  }
+
+  .cell-extra-stats {
+    gap: 0.75rem;
   }
 }
 </style>
-

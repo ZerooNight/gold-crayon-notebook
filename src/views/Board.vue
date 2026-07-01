@@ -81,13 +81,6 @@
                 @click="handleCharacterClick(char)"
               />
             </div>
-
-            <!-- 格子類型底部統計 -->
-            <CellTypeFooter
-              :cell-type="boardStore.currentCellType"
-              :activated="cellStats.activated"
-              :total="cellStats.total"
-            />
           </div>
         </section>
 
@@ -151,7 +144,6 @@ import AppLayout from '@/components/Layout/AppLayout.vue'
 import LayerSummary from '@/components/Board/LayerSummary.vue'
 import CharacterCard from '@/components/Board/CharacterCard.vue'
 import CellTypeHeader from '@/components/Board/CellTypeHeader.vue'
-import CellTypeFooter from '@/components/Board/CellTypeFooter.vue'
 import OwnershipStats from '@/components/Board/OwnershipStats.vue'
 import ResourceSummary from '@/components/Board/ResourceSummary.vue'
 import CharacterSettings from '@/components/Board/CharacterSettings.vue'
