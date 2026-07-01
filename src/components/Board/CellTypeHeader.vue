@@ -40,10 +40,6 @@
         <span class="extra-value bonus">+{{ bonusPerCell }}%</span>
       </div>
       <div class="extra-item">
-        <span class="extra-label">{{ $t('footer.totalBonus') }}</span>
-        <span class="extra-value bonus">+{{ totalBonus.toFixed(1) }}%</span>
-      </div>
-      <div class="extra-item">
         <img :src="getIconUrl('gold_crayon')" alt="金蠟筆" class="extra-icon" />
         <span class="extra-label">{{ $t('footer.crayonsNeeded') }}</span>
         <span class="extra-value crayons">{{ crayonsNeeded }}</span>
@@ -213,6 +209,7 @@ function handleImageError(event: Event) {
 /* 額外統計數據列樣式 */
 .cell-extra-stats {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 1.5rem;
   margin-top: 0.875rem;

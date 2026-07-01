@@ -397,7 +397,7 @@ watch(showSettings, (value) => {
 
 .board-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1rem;
 }
 
@@ -564,7 +564,7 @@ watch(showSettings, (value) => {
   }
 
   .board-grid {
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0.75rem;
   }
 }
