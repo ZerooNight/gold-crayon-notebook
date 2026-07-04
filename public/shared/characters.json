@@ -727,7 +727,12 @@
     "attackType": "物理",
     "deployRow": "中排",
     "role": "輸出",
-    "race": "幽靈"
+    "race": "幽靈",
+    "image": "veroo",
+    "ja": "ベル",
+    "ko": "벨루",
+    "zh_tw": "貝魯",
+    "zh_cn": "貝魯"
   },
   "薇薇": {
     "name": "薇薇",
