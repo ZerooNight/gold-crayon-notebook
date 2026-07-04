@@ -5,6 +5,11 @@ import { Logger } from '@/utils/logger'
 export interface CharacterInfo {
   name: string
   en: string
+  image?: string
+  ja?: string
+  ko?: string
+  zh_tw?: string
+  zh_cn?: string
   personality: string
   stars: number
   attackType: string

@@ -17,7 +17,7 @@ export function getAssetUrl(path: string): string {
  * 獲取角色圖片 URL
  * 優先使用本地儲存的自定義頭像，其次使用預設的 WebP 格式
  */
-export function getCharacterImageUrl(characterName: string): string {
+export function getCharacterImageUrl(characterName: string, imageName?: string): string {
   try {
     const customAvatars = localStorage.getItem('custom_character_avatars')
     if (customAvatars) {
@@ -29,7 +29,8 @@ export function getCharacterImageUrl(characterName: string): string {
   } catch (e) {
     // 忽略錯誤
   }
-  return getAssetUrl(`assets/characters/${characterName}.webp`)
+  const file = (imageName || characterName).toLowerCase()
+  return getAssetUrl(`assets/characters/${file}.webp`)
 }
 
 /**

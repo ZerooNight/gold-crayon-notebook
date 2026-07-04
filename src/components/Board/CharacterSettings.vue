@@ -17,7 +17,7 @@
         >
           <div class="card-image">
             <img 
-              :src="getCharacterImageUrl(char.name)" 
+              :src="getCharacterImageUrl(char.name, char.image || char.en)" 
               :alt="char.name"
               @error="handleImageError"
             />
@@ -64,7 +64,7 @@
               />
             </div>
           </div>
-          <div class="card-name">{{ char.name }}</div>
+          <div class="card-name">{{ getLocalizedName(char) }}</div>
         </div>
       </div>
       
@@ -91,8 +91,17 @@ const emit = defineEmits<{
   'update:show': [value: boolean]
 }>()
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const boardStore = useBoardStore()
+
+function getLocalizedName(char: any) {
+  const loc = locale.value
+  if (loc.startsWith('en')) return char.en || char.name
+  if (loc.startsWith('zh-CN')) return char.zh_cn || char.name
+  if (loc.startsWith('ja')) return char.ja || char.name
+  if (loc.startsWith('ko')) return char.ko || char.name
+  return char.zh_tw || char.name
+}
 
 const characters = computed(() => boardStore.characters || [])
 

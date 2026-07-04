@@ -9,7 +9,7 @@
   >
     <div class="character-avatar">
       <img 
-        :src="getCharacterImageUrl(character.name)" 
+        :src="getCharacterImageUrl(character.name, character.image || character.en)" 
         :alt="character.name"
         loading="lazy"
         decoding="async"
@@ -41,6 +41,7 @@ import type { FoodPreferenceLevel } from '@/stores/food'
 interface Character {
   name: string
   en: string
+  image?: string
   personality: string
   stars: number
   attackType: string

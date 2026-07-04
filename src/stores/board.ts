@@ -7,6 +7,11 @@ import { useCharactersStore } from './characters'
 export interface Character {
   name: string
   en: string
+  image?: string
+  ja?: string
+  ko?: string
+  zh_tw?: string
+  zh_cn?: string
   stars: number
   role: string
   personality: string

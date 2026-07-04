@@ -12,7 +12,7 @@
 
     <div class="character-avatar">
       <img 
-        :src="getCharacterImageUrl(character.name)" 
+        :src="getCharacterImageUrl(character.name, character.image || character.en)" 
         :alt="character.name"
         loading="lazy"
         decoding="async"
@@ -87,10 +87,12 @@ const boardStore = useBoardStore()
 
 // 根據語言選取顯示名稱
 const displayName = computed(() => {
-  if (locale.value.startsWith('en')) {
-    return props.character.en || props.character.name
-  }
-  return props.character.name
+  const loc = locale.value
+  if (loc.startsWith('en')) return props.character.en || props.character.name
+  if (loc.startsWith('zh-CN')) return props.character.zh_cn || props.character.name
+  if (loc.startsWith('ja')) return props.character.ja || props.character.name
+  if (loc.startsWith('ko')) return props.character.ko || props.character.name
+  return props.character.zh_tw || props.character.name
 })
 
 const isOwned = computed(() => 
