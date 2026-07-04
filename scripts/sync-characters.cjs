@@ -177,7 +177,12 @@ async function main() {
         if (matchedLoot) {
           enName = matchedLoot.enName;
           imageName = matchedLoot.enName.toLowerCase().replace(/[^a-z0-9]/g, '');
-          const imgUrl = 'https://lootandwaifus.com' + matchedLoot.imgRelativeUrl;
+          
+          let lootFilename = matchedLoot.imgRelativeUrl.split('/').pop();
+          if (imageName === 'ed') {
+            lootFilename = 'lethe.webp';
+          }
+          const imgUrl = 'https://lootandwaifus.com/characters/trickcal/' + lootFilename;
           const destImgPath = path.join(destDir, `${imageName}.webp`);
           
           try {
