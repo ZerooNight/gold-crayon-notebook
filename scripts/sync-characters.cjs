@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-// 映射設定
+// Personality translation mapping
 const personalityMap = {
   '冷静': '冷靜',
   '狂気': '狂亂',
@@ -11,6 +11,7 @@ const personalityMap = {
   '憂鬱': '憂鬱'
 };
 
+// Race translation mapping
 const raceMap = {
   'エルフ': '精靈',
   '妖精': '妖精',
@@ -21,6 +22,7 @@ const raceMap = {
   '竜族': '龍族'
 };
 
+// Board cell type mapping
 const tileTypeMap = {
   '攻撃': 'attack',
   '会心': 'crit',
@@ -29,7 +31,13 @@ const tileTypeMap = {
   '防御': 'defense'
 };
 
-async function downloadImage(url, destPath) {
+// Utility to download image and convert to WebP
+async function downloadAndConvertImage(url, destPath) {
+  // Force delete existing file first to avoid Windows case-insensitivity overwrite issues
+  if (fs.existsSync(destPath)) {
+    fs.unlinkSync(destPath);
+  }
+  
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to download image: ${response.statusText}`);
@@ -37,33 +45,71 @@ async function downloadImage(url, destPath) {
   const arrayBuffer = await response.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
   
-  // 使用 sharp 將 PNG 轉換成 WebP 並寫入
   await sharp(buffer)
     .webp({ quality: 90 })
     .toFile(destPath);
 }
 
+// Convert tiles list from strategy site format to layer lists
+function convertTilesToBoard(tiles) {
+  const layer1 = [];
+  const layer2 = [];
+  const layer3 = [];
+  
+  if (tiles) {
+    for (const tile of tiles) {
+      const type = tileTypeMap[tile.type];
+      if (type) {
+        if (tile.board === 1 && !layer1.includes(type)) layer1.push(type);
+        if (tile.board === 2 && !layer2.includes(type)) layer2.push(type);
+        if (tile.board === 3 && !layer3.includes(type)) layer3.push(type);
+      }
+    }
+  }
+  return { layer1, layer2, layer3 };
+}
+
 async function main() {
-  const url = 'https://trickcal-strategy.pages.dev/board/manager';
-  console.log(`正在從 ${url} 獲取角色資料...`);
+  const strategyUrl = 'https://trickcal-strategy.pages.dev/board/manager';
+  const lootUrl = 'https://lootandwaifus.com/trickcal-chibi-go-characters/';
+  
+  console.log(`Fetching active characters list from: ${strategyUrl}`);
   
   try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+    // 1. Fetch Japanese Strategy Board site
+    const strategyRes = await fetch(strategyUrl);
+    if (!strategyRes.ok) throw new Error(`HTTP error fetching strategy site: ${strategyRes.status}`);
+    const strategyHtml = await strategyRes.text();
+    
+    const strategyMatch = strategyHtml.match(/const\s+characters\s*=\s*(\[[\s\S]*?\])\s*;/);
+    if (!strategyMatch) throw new Error('Could not find characters variable in strategy site HTML');
+    const extCharacters = JSON.parse(strategyMatch[1]);
+    console.log(`Successfully fetched ${extCharacters.length} characters from strategy site.`);
+    
+    // 2. Fetch Loot & Waifus site for image and name mappings
+    let lootList = [];
+    try {
+      console.log(`Fetching English chibis list from: ${lootUrl}`);
+      const lootRes = await fetch(lootUrl);
+      if (lootRes.ok) {
+        const lootHtml = await lootRes.text();
+        const regex = /data-character-name="([^"]+)"[^>]*>[\s\S]*?src="([^"]+)"/g;
+        let match;
+        while ((match = regex.exec(lootHtml)) !== null) {
+          lootList.push({
+            enName: match[1].trim(),
+            imgRelativeUrl: match[2].trim()
+          });
+        }
+        console.log(`Successfully fetched ${lootList.length} chibis from English strategy site.`);
+      } else {
+        console.warn(`Loot and Waifus returned status ${lootRes.status}, skipping English sync fallback`);
+      }
+    } catch (err) {
+      console.warn(`Failed to fetch English chibis list, skipping English sync fallback:`, err.message);
     }
-    const html = await res.text();
     
-    // 匹配 characters 變量
-    const match = html.match(/const\s+characters\s*=\s*(\[[\s\S]*?\])\s*;/);
-    if (!match) {
-      throw new Error('無法在網頁中找到 characters 變量');
-    }
-    
-    const extCharacters = JSON.parse(match[1]);
-    console.log(`獲取成功，共找到 ${extCharacters.length} 位使徒。`);
-    
-    // 讀取本地資料庫
+    // 3. Load local database files
     const charPath = path.join(__dirname, '../public/shared/characters.json');
     const boardPath = path.join(__dirname, '../public/board/data.json');
     
@@ -71,80 +117,98 @@ async function main() {
     const boardData = JSON.parse(fs.readFileSync(boardPath, 'utf8'));
     
     let addedCount = 0;
+    let activatedCount = 0;
     
     for (const extChar of extCharacters) {
       const cnName = extChar.cn_name;
+      const newBoard = convertTilesToBoard(extChar.tiles);
       
-      // 比對是否缺失
-      if (!chars[cnName]) {
-        console.log(`發現新角色: ${cnName} (${extChar.名前})`);
+      // Check if character already exists in characters database
+      if (chars[cnName]) {
+        // If character exists but is not on the board yet, activate it!
+        if (!boardData.characterBoards[cnName]) {
+          console.log(`Activating character on the board: ${cnName}`);
+          boardData.characterBoards[cnName] = newBoard;
+          activatedCount++;
+        }
+      } else {
+        // Character is completely new! Let's add them
+        console.log(`New character detected: ${cnName} (${extChar.名前})`);
         
-        // 1. 轉換基本資料
         const personality = personalityMap[extChar.性格] || '天真';
         const race = raceMap[extChar.種族] || '???';
-        
-        // 啟發式判定攻擊類型 (魔女/幽靈/妖精 預設為魔法，其他預設為物理)
         const attackType = ['魔女', '幽靈', '妖精'].includes(race) ? '魔法' : '物理';
         
-        const newChar = {
+        // Search if we have a match in the English chibis list
+        const matchedLoot = lootList.find(x => x.enName.toLowerCase() === extChar.名前.toLowerCase() || x.enName.toLowerCase().replace(/[^a-z0-9]/g, '') === extChar.名前.toLowerCase().replace(/[^a-z0-9]/g, ''));
+        
+        let enName = extChar.名前;
+        let imageName = cnName;
+        let downloaded = false;
+        
+        const destDir = path.join(__dirname, '../public/assets/characters');
+        if (!fs.existsSync(destDir)) {
+          fs.mkdirSync(destDir, { recursive: true });
+        }
+        
+        if (matchedLoot) {
+          enName = matchedLoot.enName;
+          imageName = matchedLoot.enName.toLowerCase().replace(/[^a-z0-9]/g, '');
+          const imgUrl = 'https://lootandwaifus.com' + matchedLoot.imgRelativeUrl;
+          const destImgPath = path.join(destDir, `${imageName}.webp`);
+          
+          try {
+            console.log(`Downloading chibi portrait from lootandwaifus: ${imgUrl}`);
+            await downloadAndConvertImage(imgUrl, destImgPath);
+            downloaded = true;
+          } catch (err) {
+            console.error(`Failed to download chibi from lootandwaifus:`, err.message);
+          }
+        }
+        
+        // Fallback: download from strategy site if English download failed or was not matched
+        if (!downloaded) {
+          const imgUrl = `https://trickcal-strategy.pages.dev/assets/icons/${encodeURIComponent(extChar.名前)}.png`;
+          const destImgPath = path.join(destDir, `${imageName.toLowerCase()}.webp`);
+          try {
+            console.log(`Fallback: Downloading portrait from Japanese strategy site: ${imgUrl}`);
+            await downloadAndConvertImage(imgUrl, destImgPath);
+          } catch (err) {
+            console.error(`Failed to download fallback portrait for ${cnName}:`, err.message);
+          }
+        }
+        
+        // Save new character in database
+        chars[cnName] = {
           name: cnName,
-          en: extChar.名前, // 預設英文名為日文名，用戶可在前台編輯修改
+          en: enName,
+          image: imageName.toLowerCase(),
           personality: personality,
           stars: 3,
           attackType: attackType,
           deployRow: '中排',
           role: '輸出',
-          race: race
+          race: race,
+          zh_tw: cnName,
+          zh_cn: cnName // basic simplified placeholder
         };
         
-        // 2. 轉換著色板配置
-        const layer1 = [];
-        const layer2 = [];
-        const layer3 = [];
-        
-        if (extChar.tiles) {
-          for (const tile of extChar.tiles) {
-            const type = tileTypeMap[tile.type];
-            if (type) {
-              if (tile.board === 1 && !layer1.includes(type)) layer1.push(type);
-              if (tile.board === 2 && !layer2.includes(type)) layer2.push(type);
-              if (tile.board === 3 && !layer3.includes(type)) layer3.push(type);
-            }
-          }
-        }
-        
-        const newBoard = { layer1, layer2, layer3 };
-        
-        // 3. 下載並轉換頭像
-        const imgUrl = `https://trickcal-strategy.pages.dev/assets/icons/${encodeURIComponent(extChar.名前)}.png`;
-        const destImgPath = path.join(__dirname, `../public/assets/characters/${cnName}.webp`);
-        
-        try {
-          console.log(`下載頭像中: ${imgUrl}`);
-          await downloadImage(imgUrl, destImgPath);
-          console.log(`頭像下載完成並轉換為 WebP: ${destImgPath}`);
-        } catch (err) {
-          console.error(`下載 ${cnName} 頭像失敗:`, err.message);
-          // 如果頭像下載失敗，仍然新增角色，由使用者手動補齊頭像
-        }
-        
-        // 4. 寫入資料庫
-        chars[cnName] = newChar;
         boardData.characterBoards[cnName] = newBoard;
         addedCount++;
       }
     }
     
-    if (addedCount > 0) {
+    // Write changes back to database files if there are updates
+    if (addedCount > 0 || activatedCount > 0) {
       fs.writeFileSync(charPath, JSON.stringify(chars, null, 2), 'utf8');
       fs.writeFileSync(boardPath, JSON.stringify(boardData, null, 2), 'utf8');
-      console.log(`資料庫同步成功！共新增 ${addedCount} 個角色。`);
+      console.log(`Sync completed successfully! Added ${addedCount} new characters, activated ${activatedCount} characters.`);
     } else {
-      console.log('沒有發現新角色，資料庫已是最新狀態。');
+      console.log('No updates found, local database is up to date.');
     }
     
   } catch (error) {
-    console.error('同步過程中發生錯誤:', error);
+    console.error('An error occurred during character synchronization:', error);
     process.exit(1);
   }
 }
