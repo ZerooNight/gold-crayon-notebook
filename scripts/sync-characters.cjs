@@ -116,6 +116,28 @@ async function main() {
     const chars = JSON.parse(fs.readFileSync(charPath, 'utf8'));
     const boardData = JSON.parse(fs.readFileSync(boardPath, 'utf8'));
     
+    // Build set of active Chinese names
+    const activeCnNames = new Set(extCharacters.map(c => c.cn_name));
+    
+    // Clean up characters and boards that are no longer active on the strategy site
+    let cleanedCount = 0;
+    for (const cnName of Object.keys(chars)) {
+      if (!activeCnNames.has(cnName)) {
+        delete chars[cnName];
+        delete boardData.characterBoards[cnName];
+        cleanedCount++;
+      }
+    }
+    for (const cnName of Object.keys(boardData.characterBoards)) {
+      if (!activeCnNames.has(cnName)) {
+        delete boardData.characterBoards[cnName];
+        cleanedCount++;
+      }
+    }
+    if (cleanedCount > 0) {
+      console.log(`Cleaned up ${cleanedCount} inactive/variant characters from database.`);
+    }
+    
     let addedCount = 0;
     let activatedCount = 0;
     
@@ -125,9 +147,10 @@ async function main() {
       
       // Check if character already exists in characters database
       if (chars[cnName]) {
-        // If character exists but is not on the board yet, activate it!
-        if (!boardData.characterBoards[cnName]) {
-          console.log(`Activating character on the board: ${cnName}`);
+        // Always ensure board configuration is updated/active
+        const oldBoardStr = JSON.stringify(boardData.characterBoards[cnName]);
+        const newBoardStr = JSON.stringify(newBoard);
+        if (oldBoardStr !== newBoardStr) {
           boardData.characterBoards[cnName] = newBoard;
           activatedCount++;
         }
@@ -198,11 +221,11 @@ async function main() {
       }
     }
     
-    // Write changes back to database files if there are updates
-    if (addedCount > 0 || activatedCount > 0) {
+    // Write changes back to database files if there are updates or cleanups
+    if (addedCount > 0 || activatedCount > 0 || cleanedCount > 0) {
       fs.writeFileSync(charPath, JSON.stringify(chars, null, 2), 'utf8');
       fs.writeFileSync(boardPath, JSON.stringify(boardData, null, 2), 'utf8');
-      console.log(`Sync completed successfully! Added ${addedCount} new characters, activated ${activatedCount} characters.`);
+      console.log(`Sync completed successfully! Added ${addedCount} new characters, updated ${activatedCount} characters, cleaned up ${cleanedCount} inactive ones.`);
     } else {
       console.log('No updates found, local database is up to date.');
     }
