@@ -177,33 +177,16 @@ async function main() {
         if (matchedLoot) {
           enName = matchedLoot.enName;
           imageName = matchedLoot.enName.toLowerCase().replace(/[^a-z0-9]/g, '');
-          
-          let lootFilename = matchedLoot.imgRelativeUrl.split('/').pop();
-          if (imageName === 'ed') {
-            lootFilename = 'lethe.webp';
-          }
-          const imgUrl = 'https://lootandwaifus.com/characters/trickcal/' + lootFilename;
-          const destImgPath = path.join(destDir, `${imageName}.webp`);
-          
-          try {
-            console.log(`Downloading chibi portrait from lootandwaifus: ${imgUrl}`);
-            await downloadAndConvertImage(imgUrl, destImgPath);
-            downloaded = true;
-          } catch (err) {
-            console.error(`Failed to download chibi from lootandwaifus:`, err.message);
-          }
         }
         
-        // Fallback: download from strategy site if English download failed or was not matched
-        if (!downloaded) {
-          const imgUrl = `https://trickcal-strategy.pages.dev/assets/icons/${encodeURIComponent(extChar.名前)}.png`;
-          const destImgPath = path.join(destDir, `${imageName.toLowerCase()}.webp`);
-          try {
-            console.log(`Fallback: Downloading portrait from Japanese strategy site: ${imgUrl}`);
-            await downloadAndConvertImage(imgUrl, destImgPath);
-          } catch (err) {
-            console.error(`Failed to download fallback portrait for ${cnName}:`, err.message);
-          }
+        // Primary download: download from Japanese strategy site for 100% correct, unswapped portraits
+        const imgUrl = `https://trickcal-strategy.pages.dev/assets/icons/${encodeURIComponent(extChar.名前)}.png`;
+        const destImgPath = path.join(destDir, `${imageName.toLowerCase()}.webp`);
+        try {
+          console.log(`Downloading portrait from Japanese strategy site: ${imgUrl}`);
+          await downloadAndConvertImage(imgUrl, destImgPath);
+        } catch (err) {
+          console.error(`Failed to download portrait for ${cnName}:`, err.message);
         }
         
         // Save new character in database
