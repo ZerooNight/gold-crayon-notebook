@@ -708,5 +708,15 @@
     "deployRow": "中排",
     "role": "輸出",
     "race": "獸人"
+  },
+  "芭瓏": {
+    "name": "芭瓏",
+    "en": "バロン",
+    "personality": "冷靜",
+    "stars": 3,
+    "attackType": "魔法",
+    "deployRow": "中排",
+    "role": "輸出",
+    "race": "幽靈"
   }
 }
