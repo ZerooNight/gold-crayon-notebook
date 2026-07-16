@@ -1223,6 +1223,40 @@
         "defense",
         "critResist"
       ]
+    },
+    "達雅": {
+      "layer1": [
+        "hp",
+        "attack"
+      ],
+      "layer2": [
+        "attack",
+        "defense",
+        "critResist"
+      ],
+      "layer3": [
+        "attack",
+        "crit",
+        "defense",
+        "critResist"
+      ]
+    },
+    "提格": {
+      "layer1": [
+        "critResist",
+        "defense"
+      ],
+      "layer2": [
+        "attack",
+        "crit",
+        "hp"
+      ],
+      "layer3": [
+        "attack",
+        "hp",
+        "defense",
+        "critResist"
+      ]
     }
   },
   "boardConfig": {
