@@ -2,8 +2,8 @@ name: Sync Characters from Strategy Site
 
 on:
   schedule:
-    # 每天中午 12:00 執行 (台灣時間 UTC+8 / UTC 4:00)
-    - cron: '0 4 * * *'
+    # 每天下午 18:00 執行 (台灣時間 UTC+8 / UTC 10:00)
+    - cron: '0 10 * * *'
   workflow_dispatch: # 允許手動觸發
 
 jobs:
