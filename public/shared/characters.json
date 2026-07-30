@@ -1108,5 +1108,19 @@
     "deployRow": "中排",
     "role": "輸出",
     "race": "獸人"
+  },
+  "羅蕾特": {
+    "name": "羅蕾特",
+    "en": "ロレット",
+    "image": "羅蕾特",
+    "ja": "ロレット",
+    "personality": "狂亂",
+    "stars": 3,
+    "attackType": "魔法",
+    "deployRow": "中排",
+    "role": "輸出",
+    "race": "魔女",
+    "zh_tw": "羅蕾特",
+    "zh_cn": "羅蕾特"
   }
 }

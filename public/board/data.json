@@ -1257,6 +1257,23 @@
         "defense",
         "critResist"
       ]
+    },
+    "羅蕾特": {
+      "layer1": [
+        "critResist",
+        "defense"
+      ],
+      "layer2": [
+        "attack",
+        "crit",
+        "hp"
+      ],
+      "layer3": [
+        "attack",
+        "hp",
+        "defense",
+        "critResist"
+      ]
     }
   },
   "boardConfig": {
