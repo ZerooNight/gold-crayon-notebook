@@ -1274,6 +1274,23 @@
         "defense",
         "critResist"
       ]
+    },
+    "琵拉": {
+      "layer1": [
+        "critResist",
+        "crit"
+      ],
+      "layer2": [
+        "crit",
+        "hp",
+        "critResist"
+      ],
+      "layer3": [
+        "crit",
+        "hp",
+        "defense",
+        "critResist"
+      ]
     }
   },
   "boardConfig": {
