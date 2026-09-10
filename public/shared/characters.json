@@ -1136,5 +1136,33 @@
     "race": "龍族",
     "zh_tw": "琵拉",
     "zh_cn": "琵拉"
+  },
+  "雪蘭": {
+    "name": "雪蘭",
+    "en": "Sherum",
+    "image": "sherum",
+    "ja": "シェルム",
+    "personality": "天真",
+    "stars": 3,
+    "attackType": "魔法",
+    "deployRow": "中排",
+    "role": "輸出",
+    "race": "魔女",
+    "zh_tw": "雪蘭",
+    "zh_cn": "雪蘭"
+  },
+  "芭莉耶": {
+    "name": "芭莉耶",
+    "en": "Barie",
+    "image": "barie",
+    "ja": "バリエ",
+    "personality": "憂鬱",
+    "stars": 3,
+    "attackType": "魔法",
+    "deployRow": "中排",
+    "role": "輸出",
+    "race": "魔女",
+    "zh_tw": "芭莉耶",
+    "zh_cn": "芭莉耶"
   }
 }
