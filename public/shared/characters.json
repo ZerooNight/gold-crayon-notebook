@@ -1164,5 +1164,19 @@
     "race": "魔女",
     "zh_tw": "芭莉耶",
     "zh_cn": "芭莉耶"
+  },
+  "瓊安": {
+    "name": "瓊安",
+    "en": "Joanne",
+    "image": "joanne",
+    "ja": "ジョアン",
+    "personality": "天真",
+    "stars": 3,
+    "attackType": "魔法",
+    "deployRow": "中排",
+    "role": "輸出",
+    "race": "妖精",
+    "zh_tw": "瓊安",
+    "zh_cn": "瓊安"
   }
 }
