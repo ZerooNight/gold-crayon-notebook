@@ -1359,6 +1359,23 @@
         "defense",
         "critResist"
       ]
+    },
+    "柯米（泳裝）": {
+      "layer1": [
+        "hp",
+        "crit"
+      ],
+      "layer2": [
+        "crit",
+        "defense",
+        "critResist"
+      ],
+      "layer3": [
+        "attack",
+        "crit",
+        "hp",
+        "defense"
+      ]
     }
   },
   "boardConfig": {
