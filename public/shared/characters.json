@@ -1206,5 +1206,19 @@
     "race": "獸人",
     "zh_tw": "柯米（泳裝）",
     "zh_cn": "柯米（泳裝）"
+  },
+  "瑰恩": {
+    "name": "瑰恩",
+    "en": "Guin",
+    "image": "guin",
+    "ja": "グウィン",
+    "personality": "冷靜",
+    "stars": 3,
+    "attackType": "物理",
+    "deployRow": "中排",
+    "role": "輸出",
+    "race": "獸人",
+    "zh_tw": "瑰恩",
+    "zh_cn": "瑰恩"
   }
 }

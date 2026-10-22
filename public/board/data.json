@@ -1376,6 +1376,23 @@
         "hp",
         "defense"
       ]
+    },
+    "瑰恩": {
+      "layer1": [
+        "defense",
+        "attack"
+      ],
+      "layer2": [
+        "attack",
+        "hp",
+        "defense"
+      ],
+      "layer3": [
+        "attack",
+        "crit",
+        "hp",
+        "critResist"
+      ]
     }
   },
   "boardConfig": {
