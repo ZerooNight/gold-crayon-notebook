@@ -1220,5 +1220,19 @@
     "race": "獸人",
     "zh_tw": "瑰恩",
     "zh_cn": "瑰恩"
+  },
+  "ポラン": {
+    "name": "ポラン",
+    "en": "Polan",
+    "image": "polan",
+    "ja": "ポラン",
+    "personality": "狂亂",
+    "stars": 3,
+    "attackType": "魔法",
+    "deployRow": "中排",
+    "role": "輸出",
+    "race": "妖精",
+    "zh_tw": "ポラン",
+    "zh_cn": "ポラン"
   }
 }
